@@ -12,4 +12,8 @@ public class Finnish : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	void OnCollisionEnter(Collision collision) {
+        winText.renderer.enabled=true;
+    }
 }
