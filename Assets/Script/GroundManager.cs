@@ -18,7 +18,7 @@ public class GroundManager : MonoBehaviour {
 
         for (int i = 1; i < 10; i++)
         {
-            Vector3 pos = new Vector3(i, 0, 0);
+            Vector3 pos = new Vector3(i * ground.transform.localScale.x, 0, 0);
             float rand = Random.Range(0.0f, 1.0f);
             if (rand < 0.33)
             {
