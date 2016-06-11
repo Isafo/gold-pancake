@@ -20,7 +20,6 @@ public class GroundManager : MonoBehaviour {
         {
             Vector3 pos = new Vector3(i, 0, 0);
             float rand = Random.Range(0.0f, 1.0f);
-            Vector3 scale;
             if (rand < 0.33)
             {
                 //normal
