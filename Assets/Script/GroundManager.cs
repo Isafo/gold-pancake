@@ -75,7 +75,7 @@ public class GroundManager : MonoBehaviour {
         {
             float rand2 = Random.Range(0.0f, 1.0f);
             if (rand2 < 0.25)
-                Instantiate(enemy, new Vector3(numBoxes * ground.transform.localScale.x, height - 0.5f, 0), Quaternion.identity);
+                Instantiate(enemy, new Vector3(numBoxes * ground.transform.localScale.x, height - 1.0f, 0), Quaternion.identity);
         }
         numBoxes++;
     }
