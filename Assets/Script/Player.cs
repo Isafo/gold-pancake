@@ -21,7 +21,6 @@ public class Player : MonoBehaviour {
 
         if (Input.GetKeyDown("space"))
         {
-            Debug.Log(Input.GetAxis("Horizontal"));
             rb.AddForce(Vector2.up * JumpSpeed);
         }
 	}
