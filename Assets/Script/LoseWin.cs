@@ -38,6 +38,9 @@ public class LoseWin : MonoBehaviour
         {
             dead = true;
         }
+
+        if (player.GetComponent<Player>().holesPassed >= 10)
+            win = true;
     }
 
     void OnGUI()

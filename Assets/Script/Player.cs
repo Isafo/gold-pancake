@@ -5,6 +5,7 @@ public class Player : MonoBehaviour {
 
     public float speed = 1.0f;
     public float JumpSpeed = 100.0f;
+    public int holesPassed = 0;
 
     private Rigidbody rb;
 
