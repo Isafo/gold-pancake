@@ -5,35 +5,33 @@ public class CameraBehaviour : MonoBehaviour {
 
     public GameObject player;
 
+	public Canvas lose;
+
     private Plane[] planes;
     private Collider playerCollider;
     private Vector3 playerStartPos;
+	private bool isAlive = true;
 
 	// Use this for initialization
     void Start()
     {
         playerCollider = player.GetComponent<Collider>();
         playerStartPos = player.transform.position;
-	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		this.transform.Translate(Vector3.right * Time.deltaTime * 2);
-
         planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
-        if (!GeometryUtility.TestPlanesAABB(planes, playerCollider.bounds))
+        if (!GeometryUtility.TestPlanesAABB(planes, playerCollider.bounds) && isAlive)
         {
-            //dead = true;
+            isAlive = false;
+			Debug.Log("is dead");
+			lose.GetComponent<CanvasGroup>().alpha = 1f;
+
         }
-        /*if (player.transform.position.y >= (playerStartPos.y + winDistance))
+        else if (isAlive)
         {
-            //win = true;
+			this.transform.Translate(Vector3.right * Time.deltaTime * 2);
         }
-        if (!player.GetComponent<Player>().alive)
-        {
-            //dead = true;
-            print("Dead");
-        }*/
 	}
 }
