@@ -58,9 +58,6 @@ public class CameraBehaviour : MonoBehaviour {
             {
                 Debug.Log(tile1.transform.position.x);
                 tile1.transform.Translate(Vector3.left * (39 * 2));
-                //tile1.transform.position.Set(tile1.transform.position.x + 39, 0,0);
-                Debug.Log("collided tile1");
-                Debug.Log(tile1.transform.position.x);
 
                 currentColider = 1;
                 currentTile = 1;
