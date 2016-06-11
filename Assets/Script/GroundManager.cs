@@ -52,7 +52,7 @@ public class GroundManager : MonoBehaviour {
         else if (rand < 0.67)
         {
             //obstacle
-            boxes[curr] = (GameObject)Instantiate(obstacle, new Vector3(numBoxes * ground.transform.localScale.x, 1, 0), Quaternion.identity);
+            boxes[curr] = (GameObject)Instantiate(obstacle, new Vector3(numBoxes * ground.transform.localScale.x, 0.5f, 0), Quaternion.identity);
             lastWasHole = false;
         }
         else
@@ -60,10 +60,12 @@ public class GroundManager : MonoBehaviour {
             //hole
             if (lastWasHole)
                 boxes[curr] = (GameObject)Instantiate(ground, new Vector3(numBoxes * ground.transform.localScale.x, 0, 0), Quaternion.identity);
-
-            boxes[curr] = (GameObject)Instantiate(hole, new Vector3(numBoxes * ground.transform.localScale.x, 0, 0), Quaternion.identity);
-            lastWasHole = true;
-            numHoles++;
+            else
+            {
+                boxes[curr] = (GameObject)Instantiate(hole, new Vector3(numBoxes * ground.transform.localScale.x, 0, 0), Quaternion.identity);
+                lastWasHole = true;
+                numHoles++;
+            }
         }
         numBoxes++;
     }

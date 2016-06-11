@@ -63,10 +63,10 @@ public class LoseWin : MonoBehaviour
 
     void LoseWindowFunc(int windowID)
     {
-        if (GUI.Button(new Rect(10, 30, 100, 20), "Restart"))
+        /*if (GUI.Button(new Rect(10, 30, 100, 20), "Restart"))
         {
             restart();
-        }
+        }*/
         /*if (GUI.Button(new Rect(10, 40, 100, 20), "Quit")) {
             Application.Quit();
         }*/

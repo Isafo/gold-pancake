@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Hole : MonoBehaviour {
 
+    private bool passed = false;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -14,10 +16,14 @@ public class Hole : MonoBehaviour {
 	}
 
     void OnTriggerEnter(Collider other)
-    {        
-        if (other.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
+    {
+        if (!passed)
         {
-            other.GetComponent<Player>().holesPassed++;
+            if (other.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
+            {
+                other.GetComponent<Player>().holesPassed++;
+                passed = true;
+            }
         }
     }
 }
