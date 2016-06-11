@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
     public float speed = 1.0f;
     public float JumpSpeed = 100.0f;
     public int holesPassed = 0;
+    public int enemiesPassed = 0;
 
     public bool dead;
 
@@ -43,13 +44,11 @@ public class Player : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            Debug.Log("down");
-            rb.transform.localScale = new Vector3(1.5f,0.5f,1.0f);
+            rb.transform.localScale = new Vector3(1.0f,0.5f,1.0f);
         }
         if (Input.GetKeyUp(KeyCode.LeftControl))
         {
-            Debug.Log("down");
-            rb.transform.localScale = new Vector3(1.0f,1.0f,1.0f);
+            rb.transform.localScale = new Vector3(0.5f,1.0f,1.0f);
         }
 	}
 }

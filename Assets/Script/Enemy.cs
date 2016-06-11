@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Hole : MonoBehaviour {
+public class Enemy : MonoBehaviour {
 
     private bool passed = false;
 
@@ -12,7 +12,7 @@ public class Hole : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        
 	}
 
     void OnTriggerExit(Collider other)
@@ -21,7 +21,7 @@ public class Hole : MonoBehaviour {
         {
             if (other.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-                other.GetComponent<Player>().holesPassed++;
+                other.GetComponent<Player>().enemiesPassed++;
                 passed = true;
             }
         }

@@ -41,7 +41,7 @@ public class LoseWin : MonoBehaviour
             playerIns.die();
         }
 
-        if (player.GetComponent<Player>().holesPassed >= 10)
+        if (player.GetComponent<Player>().enemiesPassed >= 10)
             win = true;
     }
 
@@ -65,10 +65,10 @@ public class LoseWin : MonoBehaviour
 
     void LoseWindowFunc(int windowID)
     {
-        if (GUI.Button(new Rect(10, 30, 100, 20), "Restart"))
+        /*if (GUI.Button(new Rect(10, 30, 100, 20), "Restart"))
         {
             restart();
-        }
+        }*/
         /*if (GUI.Button(new Rect(10, 40, 100, 20), "Quit")) {
             Application.Quit();
         }*/
@@ -77,10 +77,10 @@ public class LoseWin : MonoBehaviour
 
     void WinWindowFunc(int windowID)
     {
-        if (GUI.Button(new Rect(10, 30, 100, 20), "Restart"))
+        /*if (GUI.Button(new Rect(10, 30, 100, 20), "Restart"))
         {
             restart();
-        }
+        }*/
     }
 
     void restart()
