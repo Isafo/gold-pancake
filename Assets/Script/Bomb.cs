@@ -7,7 +7,7 @@ public class Bomb : MonoBehaviour {
 	private Rigidbody rb;
 	private int bCount = 1;
 
-	Player playerInstance;
+	Player playerIns;
 
 	
 	private int bounceForce = 100;
@@ -15,7 +15,7 @@ public class Bomb : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		this.GetComponent<ParticleEmitter>().emit = false;
-		playerInstance = GetComponent<Player>();
+		playerIns = player.GetComponent<Player>();
 	}
 	
 	// Update is called once per frame
