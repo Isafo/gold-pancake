@@ -14,7 +14,9 @@ public class CameraBehaviour : MonoBehaviour {
 
     private Collider tile1Collider;
     private Collider tile2Collider;
-    
+
+    private int currentColider = 0;
+    private int currentTile = 0;
 
 	// Use this for initialization
     void Start()
@@ -38,14 +40,27 @@ public class CameraBehaviour : MonoBehaviour {
 			this.transform.Translate(Vector3.right * Time.deltaTime * 2);
         }
 
-
-        if (!GeometryUtility.TestPlanesAABB(planes, tile1Collider.bounds))
-        {
-            tile1.transform.Translate(Vector3.right * 4);
+        if(currentColider == 1) {
+            if (!GeometryUtility.TestPlanesAABB(planes, tile2Collider.bounds))
+            {
+                Debug.Log(tile2.transform.position.x);
+                tile2.transform.position.Set(tile2.transform.position.x + 39, 0,0);
+                Debug.Log("collided tile2");
+                Debug.Log(tile2.transform.position.x);
+            }
+            currentColider = 0;
+            currentTile = 0;
         }
-        if (!GeometryUtility.TestPlanesAABB(planes, tile2Collider.bounds))
-        {
-            tile2.transform.Translate(Vector3.right * 4);
+        else {
+            if (!GeometryUtility.TestPlanesAABB(planes, tile1Collider.bounds))
+            {
+                Debug.Log(tile1.transform.position.x);
+                tile1.transform.position.Set(tile1.transform.position.x + 39, 0,0);
+                Debug.Log("collided tile1");
+                Debug.Log(tile1.transform.position.x);
+            }
+            currentColider = 1;
+            currentTile = 1;
         }
 	}
 }
