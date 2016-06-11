@@ -10,13 +10,14 @@ public class CameraBehaviour : MonoBehaviour {
     private Plane[] planes;
     private Collider playerCollider;
     private Vector3 playerStartPos;
-	public bool isAlive = true;
 
     private Collider tile1Collider;
     private Collider tile2Collider;
 
     private int currentColider = 0;
     private int currentTile = 0;
+
+    Player playerIns;
 
 	// Use this for initialization
     void Start()
@@ -26,16 +27,18 @@ public class CameraBehaviour : MonoBehaviour {
 
         tile1Collider = tile1.GetComponent<Collider>();
         tile2Collider = tile2.GetComponent<Collider>();
+
+        playerIns = player.GetComponent<Player>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
-        if (!GeometryUtility.TestPlanesAABB(planes, playerCollider.bounds) && isAlive)
+        if (!GeometryUtility.TestPlanesAABB(planes, playerCollider.bounds) && !playerIns.isDead())
         {
-            isAlive = false;
+            playerIns.die();
         }
-        else if (isAlive)
+        else if (!playerIns.isDead())
         {
 			this.transform.Translate(Vector3.right * Time.deltaTime * 2);
         }

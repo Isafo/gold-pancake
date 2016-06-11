@@ -15,8 +15,9 @@ public class LoseWin : MonoBehaviour
     private Vector3 cameraStartPos;
 
     private Rect windowRect;
-    private bool dead;
     private bool win;
+
+    Player playerIns;
 
     // Use this for initialization
     void Start()
@@ -25,9 +26,10 @@ public class LoseWin : MonoBehaviour
         playerStartPos = player.transform.position;
         cameraStartPos = camera.transform.position;
 
-        dead = false;
         win = false;
         windowRect = new Rect(Screen.width / 2 - 60, Screen.height / 2 - 25, 120, 70);
+    
+        playerIns = player.GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -36,7 +38,7 @@ public class LoseWin : MonoBehaviour
         planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
         if (!GeometryUtility.TestPlanesAABB(planes, playerCollider.bounds))
         {
-            dead = true;
+            playerIns.die();
         }
 
         if (player.GetComponent<Player>().holesPassed >= 10)
@@ -45,7 +47,7 @@ public class LoseWin : MonoBehaviour
 
     void OnGUI()
     {
-        if (dead)
+        if (playerIns.isDead())
         {
             //stop player
             player.GetComponent<Rigidbody>().isKinematic = true;
@@ -93,10 +95,7 @@ public class LoseWin : MonoBehaviour
         player.GetComponent<Rigidbody>().isKinematic = false;
 
         //revive player
-        dead = false;
+        playerIns.revive();
         win = false;
-
-        //start camera
-        camera.GetComponent<CameraBehaviour>().isAlive = true;
     }
 }

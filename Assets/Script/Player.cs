@@ -7,13 +7,30 @@ public class Player : MonoBehaviour {
     public float JumpSpeed = 100.0f;
     public int holesPassed = 0;
 
+    public bool dead;
+
+    Player playerIns;
+
     private Rigidbody rb;
 
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
+        dead = false;
 	}
 	
+    public void die() {
+        dead = true;
+    }
+
+    public bool isDead() {
+        return dead;
+    }
+
+    public void revive() {
+        dead = false;
+    }
+
 	// Update is called once per frame
 	void Update () {
 
