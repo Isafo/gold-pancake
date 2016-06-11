@@ -25,5 +25,15 @@ public class Player : MonoBehaviour {
         {
             rb.AddForce(Vector2.up * JumpSpeed);
         }
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            Debug.Log("down");
+            rb.transform.localScale = new Vector3(1.5f,0.5f,1.0f);
+        }
+        if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            Debug.Log("down");
+            rb.transform.localScale = new Vector3(1.0f,1.0f,1.0f);
+        }
 	}
 }
