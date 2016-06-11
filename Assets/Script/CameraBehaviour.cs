@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Finnish : MonoBehaviour {
+public class CameraBehaviour : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -10,10 +10,6 @@ public class Finnish : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		this.transform.Translate(Vector3.right * Time.deltaTime * 2);
 	}
-
-	void OnCollisionEnter(Collision collision) {
-        winText.renderer.enabled=true;
-    }
 }
