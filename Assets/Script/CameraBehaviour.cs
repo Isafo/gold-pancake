@@ -7,12 +7,10 @@ public class CameraBehaviour : MonoBehaviour {
     public GameObject tile1;
     public GameObject tile2;
 
-	public Canvas lose;
-
     private Plane[] planes;
     private Collider playerCollider;
     private Vector3 playerStartPos;
-	private bool isAlive = true;
+	public bool isAlive = true;
 
     private Collider tile1Collider;
     private Collider tile2Collider;
@@ -34,8 +32,6 @@ public class CameraBehaviour : MonoBehaviour {
         if (!GeometryUtility.TestPlanesAABB(planes, playerCollider.bounds) && isAlive)
         {
             isAlive = false;
-			Debug.Log("is dead");
-
         }
         else if (isAlive)
         {

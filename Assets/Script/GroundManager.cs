@@ -5,6 +5,7 @@ public class GroundManager : MonoBehaviour {
 
     public GameObject ground;
     public GameObject obstacle;
+    public GameObject hole;
     public int numHoles = 0;
     public int numBoxes = 0;
 
@@ -30,7 +31,8 @@ public class GroundManager : MonoBehaviour {
         if (outside(boxes[current]))
         {
             //recreate this box
-            Debug.Log("out");
+            Destroy(boxes[current]);
+            createBox(current);
 
             current++;
             if (current == 10)
@@ -40,26 +42,26 @@ public class GroundManager : MonoBehaviour {
 
     void createBox(int curr)
     {
-        Vector3 pos = new Vector3(numBoxes * ground.transform.localScale.x, 0, 0);
         float rand = Random.Range(0.0f, 1.0f);
         if (rand < 0.33)
         {
             //normal
-            boxes[curr] = (GameObject)Instantiate(ground, pos, Quaternion.identity);
+            boxes[curr] = (GameObject)Instantiate(ground, new Vector3(numBoxes * ground.transform.localScale.x, 0, 0), Quaternion.identity);
             lastWasHole = false;
         }
         else if (rand < 0.67)
         {
             //obstacle
-            boxes[curr] = (GameObject)Instantiate(obstacle, pos, Quaternion.identity);
+            boxes[curr] = (GameObject)Instantiate(obstacle, new Vector3(numBoxes * ground.transform.localScale.x, 1, 0), Quaternion.identity);
             lastWasHole = false;
         }
         else
         {
             //hole
             if (lastWasHole)
-                boxes[curr] = (GameObject)Instantiate(ground, pos, Quaternion.identity);
+                boxes[curr] = (GameObject)Instantiate(ground, new Vector3(numBoxes * ground.transform.localScale.x, 0, 0), Quaternion.identity);
 
+            boxes[curr] = (GameObject)Instantiate(hole, new Vector3(numBoxes * ground.transform.localScale.x, 0, 0), Quaternion.identity);
             lastWasHole = true;
             numHoles++;
         }

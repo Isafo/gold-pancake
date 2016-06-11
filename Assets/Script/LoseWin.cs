@@ -92,5 +92,8 @@ public class LoseWin : MonoBehaviour
         //revive player
         dead = false;
         win = false;
+
+        //start camera
+        camera.GetComponent<CameraBehaviour>().isAlive = true;
     }
 }
