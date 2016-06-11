@@ -44,23 +44,27 @@ public class CameraBehaviour : MonoBehaviour {
             if (!GeometryUtility.TestPlanesAABB(planes, tile2Collider.bounds))
             {
                 Debug.Log(tile2.transform.position.x);
-                tile2.transform.position.Set(tile2.transform.position.x + 39, 0,0);
+                //tile2.transform.position.Set(tile2.transform.position.x + 39, 0,0);
+                tile2.transform.Translate(Vector3.left * (39 * 2));
                 Debug.Log("collided tile2");
                 Debug.Log(tile2.transform.position.x);
+
+                currentColider = 0;
+           	    currentTile = 0;
             }
-            currentColider = 0;
-            currentTile = 0;
         }
         else {
             if (!GeometryUtility.TestPlanesAABB(planes, tile1Collider.bounds))
             {
                 Debug.Log(tile1.transform.position.x);
-                tile1.transform.position.Set(tile1.transform.position.x + 39, 0,0);
+                tile1.transform.Translate(Vector3.left * (39 * 2));
+                //tile1.transform.position.Set(tile1.transform.position.x + 39, 0,0);
                 Debug.Log("collided tile1");
                 Debug.Log(tile1.transform.position.x);
+
+                currentColider = 1;
+                currentTile = 1;
             }
-            currentColider = 1;
-            currentTile = 1;
         }
 	}
 }
