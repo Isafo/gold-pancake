@@ -5,12 +5,10 @@ public class CameraBehaviour : MonoBehaviour {
 
     public GameObject player;
 
-	public Canvas lose;
-
     private Plane[] planes;
     private Collider playerCollider;
     private Vector3 playerStartPos;
-	private bool isAlive = true;
+	public bool isAlive = true;
 
 	// Use this for initialization
     void Start()
@@ -25,9 +23,6 @@ public class CameraBehaviour : MonoBehaviour {
         if (!GeometryUtility.TestPlanesAABB(planes, playerCollider.bounds) && isAlive)
         {
             isAlive = false;
-			Debug.Log("is dead");
-			lose.GetComponent<CanvasGroup>().alpha = 1f;
-
         }
         else if (isAlive)
         {
